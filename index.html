@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Etiketleri -->
+    <title>Askolperl | Ücretsiz Slot Oyunları - Online Casino Eğlencesi</title>
+    <meta name="description" content="Askolperl ile en iyi ücretsiz slot oyunları seni bekliyor! Tarayıcı tabanlı online casino oyunlarını indirmenize gerek kalmadan, mobil uyumlu ve hızlı şekilde hemen oyna.">
+    <meta name="keywords" content="ücretsiz slot oyunları, online casino oyunları, tarayıcı tabanlı oyunlar, indirmesiz slot oyna, mobil uyumlu slot, 3d slot oyunları, eğlenceli casino oyunları, hızlı oyun deneyimi">
+    <meta property="og:title" content="Askolperl | Ücretsiz Slot Oyunları ve Online Casino">
+    <meta property="og:description" content="İndirmesiz, tarayıcı üzerinden anında oynanabilir 3D slot ve casino oyunları. Hemen kazanmaya başla!">
+    <meta property="og:type" content="website">
+
+    <!-- AdSense Reklam Kodu -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4346551902420368" crossorigin="anonymous"></script>
+
+    <style>
+        body { background: #1a1a2e; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        h1 { color: #3498db; margin-top: 10px; font-size: 24px; text-align: center; }
+        .machine { display: flex; gap: 5px; perspective: 1000px; margin-bottom: 20px; margin-top: 20px; }
+        .slot { width: 45px; height: 70px; background: #16213e; border: 2px solid #3498db; border-radius: 10px; overflow: hidden; position: relative; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .reel { position: absolute; width: 100%; top: 0; }
+        .digit { height: 70px; display: flex; align-items: center; justify-content: center; font-size: 35px; font-weight: bold; color: #f1c40f; text-shadow: 0 0 10px #f1c40f; }
+        .controls { display: flex; justify-content: center; margin-bottom: 20px; }
+        .btn-3d { padding: 15px 40px; background: #e74c3c; border: none; border-radius: 15px; color: white; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 10px 0 #c0392b; transition: all 0.1s; }
+        .btn-3d:active { transform: translateY(5px); box-shadow: 0 5px 0 #c0392b; }
+        .btn-3d:disabled { opacity: 0.6; cursor: not-allowed; }
+        #result { margin-top: 15px; font-size: 28px; font-weight: bold; height: 40px; }
+        .info-box { background: #16213e; color: #bdc3c7; padding: 15px; border-radius: 15px; margin-top: 20px; width: 90%; max-width: 400px; border: 1px solid #3498db; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <h1>Askolperl | En İyi Ücretsiz Slot Oyunları ve Casino Deneyimi</h1>
+
+    <div class="machine">
+        <div class="slot"><div class="reel" id="r0"></div></div>
+        <div class="slot"><div class="reel" id="r1"></div></div>
+        <div class="slot"><div class="reel" id="r2"></div></div>
+        <div class="slot"><div class="reel" id="r3"></div></div>
+        <div class="slot"><div class="reel" id="r4"></div></div>
+        <div class="slot"><div class="reel" id="r5"></div></div>
+    </div>
+    <div class="controls">
+        <button class="btn-3d" id="playBtn" onclick="startGame()">OYNA</button>
+    </div>
+    <div id="result"></div>
+    
+    <div class="info-box">
+        <h3>Nasıl Oynanır?</h3>
+        <p>1. <b>Başlat:</b> Oyna butonuna bas ve 10 saniye boyunca dönen çarkları izle!</p>
+        <p>2. <b>Kazanç:</b> Çarklar durduğunda en az 3 aynı rakamı yakala, ücretsiz casino heyecanını yaşa!</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Askolperl Hakkında</h3>
+        <p>Askolperl, <b>online casino oyunları</b> dünyasında fark yaratan <b>ücretsiz slot oyunları</b> platformudur. <b>Tarayıcı tabanlı oyunlar</b> kategorisinde yer alan sistemimiz, herhangi bir indirme gerektirmeden <b>indirmesiz slot oyna</b> deneyimi sunar. İster bilgisayarından ister <b>mobil uyumlu slot</b> arayüzümüz sayesinde telefonundan kesintisiz <b>3D slot oyunları</b> oynayabilirsin. En hızlı ve <b>eğlenceli casino oyunları</b> arıyorsan, doğru yerdesin!</p>
+    </div>
+
+    <script>
+        const reels = document.querySelectorAll('.reel');
+        const playBtn = document.getElementById('playBtn');
+
+        reels.forEach(reel => {
+            for(let i=0; i<100; i++) { reel.innerHTML += `<div class="digit">${i % 10}</div>`; }
+        });
+
+        function startGame() {
+            playBtn.disabled = true;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = "Dönüyor...";
+            resultDiv.style.color = "#fff";
+
+            let finalNumbers = [];
+            const totalDuration = 10;
+
+            reels.forEach(reel => {
+                reel.style.transition = 'none';
+                reel.style.transform = 'translateY(0px)';
+            });
+
+            void reels[0].offsetHeight;
+
+            reels.forEach((reel, index) => {
+                const duration = totalDuration - ((5 - index) * 0.2);
+                reel.style.transition = `transform ${duration}s cubic-bezier(0.2, 0, 0.8, 1)`;
+                const randomNum = Math.floor(Math.random() * 10);
+                finalNumbers.push(randomNum);
+                const targetPos = (60 + randomNum) * 70;
+                reel.style.transform = `translateY(-${targetPos}px)`;
+            });
+
+            setTimeout(() => {
+                checkWin(finalNumbers);
+                playBtn.disabled = false;
+            }, (totalDuration * 1000) + 100);
+        }
+
+        function checkWin(nums) {
+            const resultDiv = document.getElementById('result');
+            let counts = {};
+            nums.forEach(n => counts[n] = (counts[n] || 0) + 1);
+            const hasWin = Object.values(counts).some(c => c >= 3);
+            if (hasWin) {
+                resultDiv.innerText = "TEBRİKLER! KAZANDIN!";
+                resultDiv.style.color = "#2ecc71";
+            } else {
+                resultDiv.innerText = "Kaybettin, tekrar dene!";
+                resultDiv.style.color = "#e74c3c";
+            }
+        }
+    </script>
+</body>
+</html>
